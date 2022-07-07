@@ -6,9 +6,18 @@ function App() {
   if(user == 'emp'){
     return (
       <>
-      <div className="emp">
-          Upload Your Resume
-      </div>
+        <div className='emp'>
+          <div className='empTitle'>
+              Upload Your Resume
+          </div>
+          <div className='space'></div>
+          <div className='formSubmitter'>        
+            <form action="uploadfiles.php" method="post">
+              <input type="file" id="myFile" name="filename"></input>
+              <input type="submit"></input>
+          </form>
+          </div>
+        </div>
       </>
     );
   }
