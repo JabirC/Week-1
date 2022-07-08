@@ -18,7 +18,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.homeButton1, .homeButton2 {
+.homeButton1, .homeButton2{
     background-color: #EAF4F4;
     height: 200px;
     width: 200px;
@@ -30,26 +30,65 @@ body {
     color: #6B9080;
 }
 
+.login{
+    background-color: #EAF4F4;
+    height: 400px;
+    width: 300px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    border: 3px solid #EAF4F4; 
+    border-radius: 30px;
+    font-family: 'Trocchi', serif;
+    font-size: 19px;
+    color: #6B9080;
+}
+
+.input-container {
+    border-style:none;
+    width: 130%;
+    height: 40px;
+    border-radius: 10px;
+    font-family: 'Trocchi', serif;
+}
+
+.inputs {
+    position: absolute;
+    top: 35%;
+    left: 20%;
+}
+
 .space {
     width: 40px;
     height: auto;
     display: inline-block;
 }
 
-.homeButton1:hover, .homeButton2:hover, .homeRedirect:hover {
+.space_emp {
+    height: 80px;
+}
+
+.homeButton1:hover, .homeButton2:hover, .homeRedirect:hover{
     background-color: #6B9080;
     border: 3px solid #6B9080;
     color: #EAF4F4;
 }
 
+.loginButton:hover {
+    background-color: #A4C3B2;
+    border: 3px solid #A4C3B2;
+    /* color: #6B9080; */
+}
+
 .empTitle{
     font-size: 25px;
+    font-family: 'Optima', serif;
 }
 
 .emp {
     margin: 0;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -69,4 +108,130 @@ body {
     color: #6B9080;
 }
 
+/* .button-container {
 
+} */
+
+.loginButton {
+    background-color: #6B9080;
+    border: 3px solid #6B9080;
+    color: #EAF4F4;
+    height: 50px;
+    width: 100px;
+    position: absolute;
+    top: 120%;
+    left: 30%;
+    border-radius: 30px;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+}
+
+.loginText {
+    position: absolute;
+    top: -60%;
+    left: 39%;
+    font-family: 'Trocchi', serif;
+    font-size: 30px;
+}
+
+
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 180%;
+    left: 0%;
+    /* top: 100%; */
+
+    background-color: #F6FFF8;
+    display: grid;
+    place-items: center;
+
+  }
+
+.vis {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 180%;
+    left: 0%;
+    /* top: 100%; */
+
+    background-color: #F6FFF8;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+}
+
+  .loader {
+    border: 15px solid #e3e3e3;
+    border-top: 15px solid #6B9080;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+  }
+
+  .results {
+    position: fixed;
+    top: 280%;
+    left: 0%;
+  }
+
+ .results1 {
+    position: fixed;
+    top: 400%;
+    left: 17%;
+ }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+  
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #A4C3B2;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+  }
+  
+  .searchTerm:focus{
+    color: #A4C3B2;
+  }
+  
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #A4C3B2;
+    background: #A4C3B2;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  /*Resize the wrap to see the search bar change!*/
+  .wrap{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
