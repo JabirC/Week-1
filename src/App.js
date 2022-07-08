@@ -63,6 +63,10 @@ function validate(){
 
   if(uname === 'admin' && pass === 'admin'){
     setUser('search');
+    setArr('');
+  }
+  else{
+    setArr('Error: Enter Valid Credentials');
   }
 }
 
@@ -101,6 +105,9 @@ function validate(){
     <div>
       <button className='homeRedirect' onClick={() => back()}>Back</button>
     </div>
+    <div className='error'>
+      {arr}
+    </div>
     <div className="login">
           <div className='inputs'>
             <div className='loginText'>
@@ -125,11 +132,14 @@ function validate(){
   else if(user === 'search'){
     return(
     <div>
+      <div>
+        <button className='homeRedirect' onClick={() => back()}>Logout</button>
+      </div>
       <div class="wrap">
         <div class="search">
             <input type="text" class="searchTerm" placeholder="What are you looking for?"/>
             <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
+              <i class="fa fa-search">Search</i>
           </button>
         </div>
       </div>
