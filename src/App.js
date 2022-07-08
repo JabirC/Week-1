@@ -14,12 +14,15 @@ function App() {
 
   function uploadFile(e){
     const data = new FormData() ;
-    data.append('file', file);
-    console.log(file);
-    // axios.post("${apiUrl}/uploadFileAPI", data)
-    //     .then(res => { // then print response status
-    //       console.log(res.statusText)
-    //     })
+      data.append('file', file);
+      // console.log(...data);
+      axios.post('http://localhost:9000/file_upload', data)
+          .then(res => { // then print response status
+            console.log(res);
+          })
+          .catch(() => {
+            console.log('error');
+          })
   }
 
   const getAssociations = () => {
@@ -42,7 +45,7 @@ function App() {
           </div>
           <div className='space'></div>
           <div className='formSubmitter'>        
-              <input className = "uploadButton1" type="file" onInput={saveFile}></input>
+              <input className = "custom-file-input" type="file" onInput={saveFile}></input>
               <button className = "uploadButton2" onClick={uploadFile}>Upload</button>
           </div>
         </div>
