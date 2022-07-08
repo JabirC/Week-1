@@ -1,27 +1,56 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
   const[user , setUser] = useState('');
-  
-  if(user == 'emp'){
+  const[arr, setArr] = useState('');
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
+
+  const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
+
+  function uploadFile(e){
+    const data = new FormData() ;
+    data.append('file', file);
+    console.log(file);
+    // axios.post("${apiUrl}/uploadFileAPI", data)
+    //     .then(res => { // then print response status
+    //       console.log(res.statusText)
+    //     })
+  }
+
+  const getAssociations = () => {
+    const ret = fetch('http://localhost:9000/express_backend')
+      .then(result => result.json())
+      .then((user) => {
+        setArr(user.express)
+      })
+  };
+
+  if(user === 'emp'){
     return (
       <>
+        <div>
+            <button className='homeRedirect' onClick={() => setUser('')}>Back</button>
+        </div>
         <div className='emp'>
           <div className='empTitle'>
-              Upload Your Resume
+              Upload your resume
           </div>
           <div className='space'></div>
           <div className='formSubmitter'>        
-            <form action="uploadfiles.php" method="post">
-              <input type="file" id="myFile" name="filename"></input>
-              <input type="submit"></input>
-          </form>
+              <input className = "uploadButton1" type="file" onInput={saveFile}></input>
+              <button className = "uploadButton2" onClick={uploadFile}>Upload</button>
           </div>
         </div>
+        <div>{arr}</div>
       </>
     );
   }
-  else if(user == 'employer'){
+  else if(user === 'employer'){
     return (
       <div className="employer">
           Hello Employer!

@@ -36,7 +36,7 @@ body {
     display: inline-block;
 }
 
-.homeButton1:hover, .homeButton2:hover {
+.homeButton1:hover, .homeButton2:hover, .homeRedirect:hover {
     background-color: #6B9080;
     border: 3px solid #6B9080;
     color: #EAF4F4;
@@ -53,4 +53,18 @@ body {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.homeRedirect {
+    background-color: #EAF4F4;
+    height: 50px;
+    width: 100px;
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    border: 3px solid #EAF4F4; 
+    border-radius: 30px;
+    font-family: 'Trocchi', serif;
+    font-size: 19px;
+    color: #6B9080;
 }
