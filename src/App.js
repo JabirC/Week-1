@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { validateIndexedDBOpenable } from '@firebase/util';
+import { getAllByAltText } from '@testing-library/react';
 
 function App() {
   const[user , setUser] = useState('');
   const[arr, setArr] = useState('');
   const[arr1, setArr1] = useState('');
+  const[searchres, setSearchres] = useState([]);
+  const[all, setAll] = useState([]);
   const[vis, setVis] = useState('vis');
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState('');
@@ -50,12 +53,29 @@ async function uploadFile(e){
   }
 
 const getAssociations = () => {
-  const ret = fetch('http://localhost:9000/express_backend')
-    .then(result => result.json())
-    .then((user) => {
-      setArr(user.express)
-    })
+  var tempRes = [];
+
+  // const term = document.getElementById('searchVal').value.split(',');
+  const term = document.getElementById('searchVal').value;
+  all.forEach(element => {
+
+      element['skills'].forEach(str => {
+        if (str == term){
+          tempRes.push(element);
+        }
+      })
+  });
+  console.log(tempRes);
+  setSearchres(tempRes);
 };
+
+const getItems = () =>{
+  const ret = fetch('http://localhost:9000/express_backend')
+  .then(result => result.json())
+  .then((user) => {
+    setAll(user.express);
+  })
+}
 
 function validate(){
   const uname = document.getElementById('uname').value;
@@ -64,6 +84,7 @@ function validate(){
   if(uname === 'admin' && pass === 'admin'){
     setUser('search');
     setArr('');
+    getItems();
   }
   else{
     setArr('Error: Enter Valid Credentials');
@@ -135,13 +156,37 @@ function validate(){
       <div>
         <button className='homeRedirect' onClick={() => back()}>Logout</button>
       </div>
-      <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?"/>
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search">Search</i>
+      <div className="wrap">
+        <div className="search">
+            <input type="text" id="searchVal" className="searchTerm" placeholder="What are you looking for?"/>
+            <button type="submit" onClick={() => getAssociations()} className="searchButton">
+              <i className="fa fa-search">Search</i>
           </button>
         </div>
+      </div>
+      <div className="SearchRes">
+        <ul>
+        { searchres.map(({ fname, lname, skills, email, website, phone_num }) => (
+          <div className='boardContainer'>
+           <div className='board'>
+              <li key={phone_num}>
+              <div className='skiSpace'></div>
+               <div className='listName'>
+                {fname} {lname}
+               </div>
+               <div className='listSkills'>
+                  {skills.map((ski) => {
+                     return <div className="skiList"> {ski} </div>
+                  })}
+               </div>
+              <div className='skiSpace'></div>
+              </li>
+           </div>
+           <div className='listSpace'></div>
+          </div>
+        ))
+        }
+        </ul>
       </div>
     </div>
     );

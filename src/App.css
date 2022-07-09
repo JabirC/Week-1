@@ -231,7 +231,65 @@ body {
   .searchButton:hover {
     background: #6B9080;
   }
+
+  .SearchRes {
+    position: absolute;
+    width: 1000px;
+    top: 40%;
+    left: 17%;
+    list-style: none;
+  }
+
   
+  .board {
+    position: relative;
+    top: -10%;
+    left: 0%;
+    width: 900px;
+    /* height: 100px; */
+    list-style: none;
+    background: #EAF4F4;
+    border-radius: 30px;
+    font-family: 'Trocchi', serif;
+
+  }
+
+  .board:hover{
+    background: #6B9080;
+    color: white;
+  }
+
+  .board:hover > .skiList{
+    color: white;
+  }
+
+  .board:has(.skiList):hover {
+    color: white;
+  }
+
+  .listSpace{
+    height: 20px;
+    display: inline-block;
+  }
+
+  .listName {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    text-align: justify;
+    text-align-last: left;
+    font-weight: bold;
+  }
+
+  .skiList{
+    color: #484D6D;
+  }
+
+ 
+  .skiSpace{
+    height: 10px;
+  }
+
   /*Resize the wrap to see the search bar change!*/
   .wrap{
     width: 30%;
